@@ -2,8 +2,22 @@
 <html lang="en">
 <%- include('includes/head', {pageTitle: "Home Page"}) %>
 <body>
-    <div class="h-[5em] w-[5em] bg-[#00ff22]">
-
+    <section class="flex justify-center items-center py-5">
+        <div class="w-fit h-fit bg-[url('/static/assets/no-bg.jpg')] object-cover object-center bg-no-repeat border-[3px] border-[black]">
+            <canvas id="character_canvas"></canvas>
+        </div>
+    </section>
+    <div class="flex justify-center">
+        <button onclick="generate()" class="font-bold border-[3px] border-[black] px-5 py-3 bg-[gray]">Generate</button>
     </div>
+    <div>
+        <button id="generateBody">Body</button>
+        <button id="generateHair">Hair</button>
+        <button id="generateFace">Face</button>
+        <button id="generateBase">Base Cloth</button>
+        <button id="generateCoat">Coat</button>
+        <button id="generateAccess">Accessory</button>
+    </div>
+<%- include('includes/foot') %>
 </body>
 </html>
