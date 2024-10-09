@@ -6,6 +6,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 1 Description",
     image: "https://img.freepik.com/free-vector/programmers-concept-with-flat-design_23-2147856685.jpg?t=st=1728485329~exp=1728488929~hmac=bcaba3b2a7a24ba89d542a7b7dc3072771304ee2e301a0fd769114f739d4fb0f&w=826",
     altText: "Test 1 Image",
+    url: "https://www.google.com",
 },
 {
     id: 2,
@@ -13,6 +14,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 2 Description",
     image: "https://img.freepik.com/free-vector/programmers-concept-with-flat-design_23-2147856686.jpg?t=st=1728485360~exp=1728488960~hmac=311d8aee614da07e79dd1fc9db97d599bebc4cddbc5379e50cd69a53bc0d2437&w=826",
     altText: "Test 2 Image",
+    url: "https://www.google.com",
 },
 {
     id: 3,
@@ -20,6 +22,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 3 Description",
     image: "https://img.freepik.com/free-vector/tiny-developers-programming-website-internet-platform-flat-vector-illustration-cartoon-programmers-near-screen-with-open-code-script-software-development-digital-technology-concept_74855-10168.jpg?t=st=1728485382~exp=1728488982~hmac=56e7afd59971ed701d3d60be355aa1cd7e3cf58ef6f20e4630093053d8b4038f&w=1380",
     altText: "Test 3 Image",
+    url: "https://www.google.com",
 },
 {
     id: 4,
@@ -27,6 +30,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 4 Description",
     image: "https://img.freepik.com/free-vector/organic-flat-computer-programming-illustration_23-2148955256.jpg?t=st=1728485403~exp=1728489003~hmac=a185f21fd093db15fb37859e2ea86224e62ece8526d8c30263cd4da301553f3d&w=1380",
     altText: "Test 4 Image",
+    url: "https://www.google.com",
 },
 {
     id: 5,
@@ -34,6 +38,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 5 Description",
     image: "https://img.freepik.com/free-photo/cyber-security-experts-working-with-tech-devices-neon-lights_23-2151645636.jpg?t=st=1728485443~exp=1728489043~hmac=556c2878db01d5393ce93fd26c060cb9d227a3f78675f3b6a1e4861697944aa1&w=740",
     altText: "Test 5 Image",
+    url: "https://www.google.com",
 },
 {
     id: 6,
@@ -41,6 +46,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "",
     image: "https://img.freepik.com/free-photo/portrait-young-3d-adorable-baby-boy_23-2151734954.jpg?t=st=1728485489~exp=1728489089~hmac=a69c99846fa9db915062356543b93c3eeb8c742ec0bb4f5d4ec2bfa980a4a2d9&w=996",
     altText: "Test 6 Image",
+    url: "https://www.google.com",
 },
 {
     id: 7,
@@ -48,6 +54,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "",
     image: "https://img.freepik.com/free-photo/cut-tiger-bicycle_23-2150875326.jpg?t=st=1728485508~exp=1728489108~hmac=e96620f1621816f9f1123e8a934cf417a7e241a9ea7f0848f8910b23d7638476&w=1380",
     altText: "Test 7 Image",
+    url: "https://www.google.com",
 },
 {
     id: 8,
@@ -55,6 +62,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 8 Description",
     image: "https://img.freepik.com/free-vector/pixel-art-vacation-background_52683-86708.jpg?t=st=1728485541~exp=1728489141~hmac=2c0a427bf6565047c6ce5aed7c28f4d2fb843619254c5f5d3294b10b538177f4&w=1380",
     altText: "Test 8 Image",
+    url: "https://www.google.com",
 },
 {
     id: 9,
@@ -62,6 +70,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 9 Description",
     image: "https://img.freepik.com/free-photo/pixel-art-river-landscape-illustration_23-2151793151.jpg?t=st=1728485580~exp=1728489180~hmac=6beca413ee740f326dd3f24291136c853d2eaf6c8935a488c2379ea8a6f30249&w=1380",
     altText: "Test 9 Image",
+    url: "https://www.google.com",
 },
 {
     id: 10,
@@ -69,6 +78,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 10 Description",
     image: "https://img.freepik.com/free-vector/stylish-character-poses_52683-34422.jpg?t=st=1728485611~exp=1728489211~hmac=6a9383a5629efb41705d7cc6feae0c9a554ad088314b4c4d97a51de98cc3bfbc&w=1380",
     altText: "Test 10 Image",
+    url: "https://www.google.com",
 },
 {
     id: 11,
@@ -76,6 +86,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 11 Description",
     image: "https://img.freepik.com/free-vector/professional-man-woman-illustration_1308-175199.jpg?t=st=1728485630~exp=1728489230~hmac=1007fc50203abf9c02f4df19300d2158b5f31b49402568a48a5dad0d07a2c21d&w=740",
     altText: "Test 11 Image",
+    url: "https://www.google.com",
 },
 {
     id: 12,
@@ -83,6 +94,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 12 Description",
     image: "https://img.freepik.com/free-photo/girl-orange-jacket-with-word-fire-it_1340-27751.jpg?t=st=1728485651~exp=1728489251~hmac=dfdd65a49a1e700d73a7703da08a3739aa13a2fcf51263519f658e20357c5332&w=740",
     altText: "Test 12 Image",
+    url: "https://www.google.com",
 },
 {
     id: 13,
@@ -90,6 +102,7 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 13 Description",
     image: "https://img.freepik.com/free-vector/group-beetles-cartoon-character_1308-98950.jpg?t=st=1728485684~exp=1728489284~hmac=457ac979c5ed558aabef3ded999762e9a70b12a67a8158b358241d28dddb6943&w=826",
     altText: "Test 13 Image",
+    url: "https://www.google.com",
 },
 {
     id: 14,
@@ -97,4 +110,5 @@ export const testGalleryData : T_GalleryCard[] = [{
     description: "Test 14 Description",
     image: "https://img.freepik.com/free-vector/hand-drawn-frailejon-plant-illustration_23-2150002538.jpg?t=st=1728485722~exp=1728489322~hmac=eb33a068abfe2af6e336a5685a35ae4fdd239d34224e13e0be2101b9c7840330&w=826",
     altText: "Test 14 Image",
+    url: "https://www.google.com",
 },];
