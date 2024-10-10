@@ -1,10 +1,22 @@
+'use client'
+
+import {useState} from "react";
 import Navbar from "./components/Nav/Navbar";
 import Gallery from "./components/Gallery/Gallery";
+import Modal from "./components/Modals/Modal";
+import AccountModalContent from "./components/Modals/AccountModalContent"
 
 export default function Home() {
+  
+  // Account Modal State Toggler
+  const [accModal, setAccModal] = useState("hidden");
+
   return (
     <>
-      <Navbar/>
+      <Navbar accModal={accModal} setAccModal={setAccModal}/>
+      <Modal modal={accModal} setModal={setAccModal}>
+        <AccountModalContent/>
+      </Modal>
       <section className="flex flex-col justify-center items-center h-[50vh]">
         <h1 className="font-bold font-sp text-[25px]">Lets build a world of pixels</h1>
         <p className="text-[18px] font-sec">High Quality Assets, Pixel art, Vector Art, Designs and More...</p>

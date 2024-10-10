@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import Footer from "@/app/components/Footer/Footer";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Make You Pixel",
@@ -42,9 +32,10 @@ export default function RootLayout({
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Spicy+Rice&display=swap" rel="stylesheet"/>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased"
       >
         {children}
+        <Footer />
       </body>
     </html>
   );

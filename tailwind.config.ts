@@ -7,7 +7,34 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "modalBgFadeIn": "modalBgFadeIn 0.5s ease-in-out forwards",
+        "modalFadeIn": "modalFadeIn 0.5s ease-in-out forwards",
+      },
+      keyframes: {
+        modalBgFadeIn: {
+          "0%": { 
+            opacity: 0,
+            display: "block",
+          },
+          "100%": { 
+            opacity: 0.4,
+          },
+        },
+        modalFadeIn: {
+          "0%": { 
+            opacity: 0,
+            top: "30%",
+            display: "block",
+          },
+          "100%": { 
+            opacity: 1,
+            top: "50%",
+          },
+        },
+      },
+    },
     colors: {
       background: "var(--background)",
       foreground: "var(--foreground)",
