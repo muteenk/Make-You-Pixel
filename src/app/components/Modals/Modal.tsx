@@ -16,7 +16,7 @@ const Modal = ({modal, setModal, className, children}: any) => {
 
   return (
     <>
-    <div className={ (modal === activeState) ? modalBgActive : modalBgHidden }></div>
+    <div className={ (modal === activeState) ? modalBgActive : modalBgHidden } onClick={toggleModal}></div>
     <div className={`${modal} ${className}`}>
       <header className="flex justify-end items-center">
         <button className="text-[black] px-5 py-3 text-[25px]" onClick={toggleModal}><i className="fa-solid fa-xmark"></i></button>
