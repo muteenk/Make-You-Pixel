@@ -4,7 +4,6 @@ import {useSession, signIn} from "next-auth/react"
 
 export default function AccountModalContent() {
   const { data: session } = useSession()
-  console.log(session)
   if (session) {
     return (
       <>
@@ -16,7 +15,7 @@ export default function AccountModalContent() {
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn("github")}>Sign in using Github</button>
+      <button onClick={() => signIn()}>Sign in</button>
     </>
   )
 }
