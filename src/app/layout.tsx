@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/app/components/Footer/Footer";
-import SessionWrapper from "@/app/components/Auth/SessionWrapper";
+import AuthProvider from "@/app/context/AuthProvider";
 import "./globals.css";
 
 
@@ -32,14 +32,14 @@ export default function RootLayout({
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Spicy+Rice&display=swap" rel="stylesheet"/>
       </head>
-      <SessionWrapper>
+      <AuthProvider>
         <body
           className="antialiased"
         >
           {children}
           <Footer />
         </body>
-      </SessionWrapper>
+      </AuthProvider>
     </html>
   );
 }

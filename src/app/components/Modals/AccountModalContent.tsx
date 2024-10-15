@@ -4,10 +4,22 @@ import {useSession, signIn} from "next-auth/react"
 
 export default function AccountModalContent() {
   const { data: session } = useSession()
+
+
+  const authenticate = async () => {
+    
+    signIn()
+    
+  }
+
+
   if (session) {
+    console.log(session)
     return (
       <>
-        <Image src={session.user.image} alt="User Image" width={100} height={100} className="rounded-full" />
+        {
+          session.user.image ? <Image src={session.user.image} alt="User Image" width={100} height={100} className="rounded-full" /> : <i className="fa-solid fa-user-circle"></i>
+        }
         <p>Signed in as {session.user.email}</p>
       </>
     )
@@ -15,7 +27,7 @@ export default function AccountModalContent() {
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <button onClick={authenticate}>Sign in</button>
     </>
   )
 }

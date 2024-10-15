@@ -25,9 +25,11 @@ const Navbar = ({accModal, setAccModal}) => {
               session ? 
               <>
                 <button onClick={toggleModal} className="font-bold font-sec text-[#232323] text-[15px] mx-3">
-                  <Image src={session.user.image} alt="User Image" width={30} height={30} className="rounded-full border-[1px] border-yellowBorder" />
+                {
+                  session.user.image ? <Image src={session.user.image} alt="User Image" width={30} height={30} className="rounded-full border-[1px] border-yellowBorder" priority={false} /> : <i className="fa-solid fa-user-circle"></i>
+                } 
                 </button>
-                <button onClick={() => signOut()} className="font-bold font-sec text-[#232323] text-[15px] mx-3">Sign Out</button>
+                <button onClick={() => signOut("email")} className="font-bold font-sec text-[#232323] text-[15px] mx-3">Sign Out</button>
               </>
               :
               <>
