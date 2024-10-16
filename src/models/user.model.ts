@@ -1,15 +1,15 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import {IUser} from '@/lib/interfaces/authInterfaces';
 
 const UserSchema = new Schema<IUser>({
   username: {
     type: String,
-    //required: true,
-    //unique: true,
+    required: [true, "Username is required"],
+    unique: [true, "Username already exists"],
   },
   email: {
     type: String,
-    required: true,
+    required: [true, "Email is required"],
     unique: [true, "Email already exists"],
     match: [/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/, "Please fill a valid email address"],
   },

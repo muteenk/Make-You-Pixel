@@ -1,32 +1,77 @@
-import { NextAuthOptions } from 'next-auth'
-import CredentialsProvider from "next-auth/providers/credentials";
+import { NextAuthOptions } from 'next-auth';
+import GithubProvider from "next-auth/providers/github"
+import EmailProvider from "next-auth/providers/email";
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
 
+import mongoClient from "@/lib/database/mongoClient"
+import dbConnect from '@/lib/database/dbConnect'
+import User from "@/models/user.model"
 
-providers: [
-  CredentialsProvider({
-    // The name to display on the sign in form (e.g. "Sign in with...")
-    name: "Credentials",
-    // `credentials` is used to generate a form on the sign in page.
-    // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-    // e.g. domain, username, password, 2FA token, etc.
-    // You can pass any HTML attribute to the <input> tag through the object.
-    credentials: {
-      username: { label: "Username", type: "text", placeholder: "jsmith" },
-      password: { label: "Password", type: "password" }
-    },
-    async authorize(credentials, req) {
-      // Add logic here to look up the user from the credentials supplied
-      const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+import DefaultAvatar from "@/assets/defaultAvatar.jpg"
 
-      if (user) {
-        // Any object returned will be saved in `user` property of the JWT
-        return user
-      } else {
-        // If you return null then an error will be displayed advising the user to check their details.
-        return null
+const authOptions: NextAuthOptions = {
+  adapter: MongoDBAdapter(mongoClient),
+  providers: [
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: Number(process.env.EMAIL_SERVER_PORT as string),
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD
+        }
+      },
+      from: process.env.EMAIL_FROM
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
+    }),
+  ],
+  secret: process.env.AUTH_SECRET,
+  callbacks: {
+    //async createUser({user}) {
+      //console.log(user)
+      //await dbConnect();
+      //user.username = user.email;
+      //const newUser = new User({
+      //  email: user.email,
+      //  username: user.email,
+      //});
+      //await newUser.save();
+      //return user; 
+    //},
+    async signIn({ user, account, email }) {
+     await dbConnect();
 
-        // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+      if (account && account.provider === "github") {
+        user.avatar = user.image;
+        return true;
       }
-    }
-  })
-]
+
+     const userExists = await User.findOne({
+       email: user.email,  //the user object has an email property, which contains the email the user entered.
+     });
+     if (!userExists) {
+        const newUser = new User({
+          email: user.email,
+          username: "testUsername",
+        });
+
+        await newUser.save();
+     }
+
+     return true;
+    },
+    //async session({ session, token, user }) {
+    //  // Add any additional data to the session here
+    //  return session
+    //},
+  },
+  //pages: {
+    //newUser: '/onboarding' 
+  //},
+}
+
+
+export default authOptions
