@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Footer from "@/app/components/Footer/Footer";
 import AuthProvider from "@/app/context/AuthProvider";
 import "./globals.css";
 
@@ -37,7 +36,6 @@ export default function RootLayout({
           className="antialiased"
         >
           {children}
-          <Footer />
         </body>
       </AuthProvider>
     </html>

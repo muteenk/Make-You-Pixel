@@ -5,6 +5,7 @@ import Navbar from "./components/Nav/Navbar";
 import Gallery from "./components/Gallery/Gallery";
 import Modal from "./components/Modals/Modal";
 import AccountModalContent from "./components/Modals/AccountModalContent"
+import Footer from "@/app/components/Footer/Footer";
 
 export default function Home() {
   
@@ -27,6 +28,7 @@ export default function Home() {
         </div>
       </section>
       <Gallery />
+      <Footer/>
     </>
   );
 }

@@ -1,3 +1,5 @@
+"use client"
+import { useState } from "react"
 import Image from "next/image"
 import Logo from "../Atoms/Logo"
 import {useSession, signIn} from "next-auth/react"
@@ -5,11 +7,23 @@ import {useSession, signIn} from "next-auth/react"
 export default function AccountModalContent() {
   const { data: session } = useSession()
 
+  const [email, setEmail] = useState("")
 
-  const authenticate = async () => {
+  const authWithMail = async () => {
     
-    signIn()
+    try {
+      if (!email || email === "" || email === " ") return;
+        const res = await signIn('email', {email})
+        console.log(res)
+    }
+    catch (error) {
+      console.error(error)
+    }
     
+  }
+
+  const authWithGithub = async () => {
+    signIn('github')
   }
 
 
@@ -27,7 +41,12 @@ export default function AccountModalContent() {
   return (
     <>
       Not signed in <br />
-      <button onClick={authenticate}>Sign in</button>
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+      <button onClick={authWithMail}>Sign in with Magic Link</button>
+      <br/>
+      <br/>
+      <button onClick={authWithGithub}>Sign in with Github</button>
+
     </>
   )
 }
