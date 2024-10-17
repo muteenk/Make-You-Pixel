@@ -42,6 +42,7 @@ const config: Config = {
       lightBorder: "var(--light-border)",
       yellowBorder: "var(--yellow-border)",
       primaryHover: "var(--primary-hover)",
+      graySelect: "var(--gray-select)",
     },
     fontFamily: {
       'sp': ["Spicy Rice", "serif"],

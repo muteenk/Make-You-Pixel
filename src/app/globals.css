@@ -8,6 +8,7 @@
   --light-border: #c4c4c4;
   --yellow-border: #c6a246;
   --primary-hover: #e9cf5b;
+  --gray-select: #d0d0d0;
 
   --pri-font: "Open Sans", sans-serif;
   --sec-font: "Space Mono", monospace;
@@ -18,11 +19,16 @@
   body {
     background: var(--background);
     font-family: var(--pri-font);
+    overflow-x: hidden;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .sidebar-tabs {
+    @apply px-3 py-2 hover:bg-[#d0d0d0] w-full font-bold;
   }
 }
