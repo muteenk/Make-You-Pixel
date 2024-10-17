@@ -7,8 +7,6 @@ import mongoClient from "@/lib/database/mongoClient"
 import dbConnect from '@/lib/database/dbConnect'
 import User from "@/models/user.model"
 
-import DefaultAvatar from "@/assets/defaultAvatar.jpg"
-
 const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(mongoClient),
   providers: [
@@ -30,43 +28,63 @@ const authOptions: NextAuthOptions = {
   ],
   secret: process.env.AUTH_SECRET,
   callbacks: {
-    //async createUser({user}) {
-      //console.log(user)
-      //await dbConnect();
-      //user.username = user.email;
-      //const newUser = new User({
-      //  email: user.email,
-      //  username: user.email,
-      //});
-      //await newUser.save();
-      //return user; 
-    //},
-    async signIn({ user, account, email }) {
-     await dbConnect();
+    async signIn({ user, account }) {
+      await dbConnect();
 
-      if (account && account.provider === "github") {
-        user.avatar = user.image;
-        return true;
-      }
-
-     const userExists = await User.findOne({
-       email: user.email,  //the user object has an email property, which contains the email the user entered.
-     });
-     if (!userExists) {
-        const newUser = new User({
+      if (user){
+        const userExists = await User.findOne({
           email: user.email,
-          username: "testUsername",
         });
 
-        await newUser.save();
-     }
+        if (!userExists) {
 
-     return true;
+          if (account && account.provider === "github") {
+            user.provider = account.provider;
+            user.isVerified = true;
+            user.role = "user";
+          }
+          else {
+            const newUser = new User({
+              email: user.email,
+              name: user.email?.split("@")[0],
+              image: "default",
+              isVerified: (account && account.provider === "email") ? true : false,
+              provider: (account) ? account.provider : "email",
+            });
+            await newUser.save();
+          }
+          return true;
+        }
+        else{
+          if (account && account.provider == userExists.provider) return true;
+          return false;
+        }
+      }
+      else return false;
     },
-    //async session({ session, token, user }) {
-    //  // Add any additional data to the session here
-    //  return session
-    //},
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user._id;
+        token.name = user.name;
+        token.email = user.email;
+        token.image = user.image;
+        token.role = user.role;
+      }
+      console.log(token)
+      return token
+    },
+    async session({ session, token, user }) {
+      if (user){
+        session.user = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          role: user.role,
+        };
+      }
+      return session
+    },
   },
   //pages: {
     //newUser: '/onboarding' 

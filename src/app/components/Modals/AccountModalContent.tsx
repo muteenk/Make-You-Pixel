@@ -14,11 +14,11 @@ export default function AccountModalContent() {
 
 
   if (session) {
-    console.log(session)
+    const imgUrl: string = (session.user.image === "default") ? process.env.DEFAULT_AVATAR_URL || "" : session.user.image || "";
     return (
       <>
         {
-          session.user.image ? <Image src={session.user.image} alt="User Image" width={100} height={100} className="rounded-full" /> : <i className="fa-solid fa-user-circle"></i>
+          session.user.image ? <Image src={imgUrl} alt="User Image" width={100} height={100} className="rounded-full" /> : <i className="fa-solid fa-user-circle"></i>
         }
         <p>Signed in as {session.user.email}</p>
       </>

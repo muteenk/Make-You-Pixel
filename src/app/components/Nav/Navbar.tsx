@@ -3,7 +3,12 @@ import Image from "next/image";
 import {useSession, signOut} from "next-auth/react";
 import Logo from "@/app/components/Atoms/Logo";
 
-const Navbar = ({accModal, setAccModal}) => {
+type NavbarProps = {
+  accModal: string,
+  setAccModal: (state: string) => void
+}
+
+const Navbar = ({accModal, setAccModal}: NavbarProps) => {
 
   const {data: session} = useSession();
 
@@ -26,10 +31,10 @@ const Navbar = ({accModal, setAccModal}) => {
               <>
                 <button onClick={toggleModal} className="font-bold font-sec text-[#232323] text-[15px] mx-3">
                 {
-                  session.user.image ? <Image src={session.user.image} alt="User Image" width={30} height={30} className="rounded-full border-[1px] border-yellowBorder" priority={false} /> : <i className="fa-solid fa-user-circle"></i>
+                  session.user.image ? <Image src={(session.user.image === "default") ? process.env.DEFAULT_AVATAR_URL || "" : session.user.image || ""} alt="User Image" width={30} height={30} className="rounded-full border-[1px] border-yellowBorder" priority={false} /> : <i className="fa-solid fa-user-circle"></i>
                 } 
                 </button>
-                <button onClick={() => signOut("email")} className="font-bold font-sec text-[#232323] text-[15px] mx-3">Sign Out</button>
+                <button onClick={() => signOut()} className="font-bold font-sec text-[#232323] text-[15px] mx-3">Sign Out</button>
               </>
               :
               <>

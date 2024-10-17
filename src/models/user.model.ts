@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import {IUser} from '@/lib/interfaces/authInterfaces';
 
 const UserSchema = new Schema<IUser>({
-  username: {
+  name: {
     type: String,
     required: [true, "Username is required"],
     unique: [true, "Username already exists"],
@@ -13,7 +13,7 @@ const UserSchema = new Schema<IUser>({
     unique: [true, "Email already exists"],
     match: [/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/, "Please fill a valid email address"],
   },
-  avatar: {
+  image: {
     type: String,
   },
   verifyCode: {
@@ -25,6 +25,9 @@ const UserSchema = new Schema<IUser>({
   isVerified: {
     type: Boolean,
     default: false,
+  },
+  provider: {
+    type: String,
   },
   role: {
     type: String,
